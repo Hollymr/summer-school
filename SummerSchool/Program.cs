@@ -12,8 +12,9 @@ namespace SummerSchool
 
         static int MenuGetInput()
         {
-            
-            int menuChoice = 1;
+
+            //int menuChoice = 1;
+           // while (menuChoice != 4)
             
 
             Console.WriteLine("Welcome to Hogwarts!");
@@ -25,7 +26,7 @@ namespace SummerSchool
             Console.WriteLine("4. Exit");
 
             int mainChoice = Convert.ToInt32(Console.ReadLine());
-            return menuChoice;
+            return mainChoice;
 
             
         }
@@ -38,7 +39,19 @@ namespace SummerSchool
             {
                 EnrollStudent();
             }
-            Console.ReadKey();       
+
+            if (menuChoice == 2)
+            {
+                UnEnrollStudent();
+            }
+
+            if (menuChoice == 3)
+            {
+                PrintStudentList();
+            }
+
+
+            Console.ReadKey();  
         }
 
 
@@ -52,10 +65,10 @@ namespace SummerSchool
 
         }
 
-        static void UnEnrollStudents()
+        static void UnEnrollStudent()
         {
-        
 
+            Console.WriteLine("Unenroll");
         }
 
         static void PrintStudentList()
