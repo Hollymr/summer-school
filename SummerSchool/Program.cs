@@ -92,6 +92,7 @@ namespace SummerSchool
             string student = Console.ReadLine();
             int spot = GetAvalibleSpot();
             students[spot] = student;
+            Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £200.");
         }
 
         static void UnEnrollStudent()
