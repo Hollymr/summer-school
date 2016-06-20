@@ -99,7 +99,7 @@ namespace SummerSchool
             Console.WriteLine("Enter a student to be unenrolled then press enter.");
             string student = Console.ReadLine();
             int spot = GetAvalibleSpot();
-            students[spot] = student;
+            students[spot] = null ;
 
             //for (int i = 0; i < students.Length; i--)
             //{
@@ -115,7 +115,7 @@ namespace SummerSchool
             for (int i = 0; i < students.Length; i++)
             {
                 // EnrollStudent()
-                Console.WriteLine(students[i]);
+                Console.WriteLine(i + 1 + students[i]);
             }
         }
 
