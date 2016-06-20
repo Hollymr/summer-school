@@ -13,10 +13,10 @@ namespace SummerSchool
         static int MenuGetInput()
         {
 
-            
+
             // while (menuChoice != 4)
 
-
+            Console.WriteLine(" ");
             Console.WriteLine("Welcome to Hogwarts!");
             Console.WriteLine();
             Console.WriteLine("Choose option below.");
@@ -33,7 +33,7 @@ namespace SummerSchool
         }
 
         static string[] students = new string[15];
-        
+        static double[] studentsCost = new double[15];
 
         static void Main(string[] args)
         {
@@ -87,11 +87,13 @@ namespace SummerSchool
 
 
         static void EnrollStudent()
-        { 
+        {
+            double cost = 200;
             Console.WriteLine("Enter a student then press enter.");
             string student = Console.ReadLine();
             int spot = GetAvalibleSpot();
             students[spot] = student;
+            studentsCost[spot] = cost; 
             Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £200.");
         }
 
@@ -105,20 +107,21 @@ namespace SummerSchool
             Console.WriteLine(students[number] + " has been unenrolled.");
             students[number] = null;
             Console.WriteLine();
-           
-            
-           
+                                  
         }
 
         static void PrintStudentList()
         {
-           
+
             for (int i = 0; i < students.Length; i++)
             {
                 // EnrollStudent()
-                Console.WriteLine(i + 1 + ". " + students[i]);
+                Console.WriteLine(i + 1 + ". " + students[i] + " £" + studentsCost[i]);
             }
+
         }
+
+        
 
         static void Exit()
         {
