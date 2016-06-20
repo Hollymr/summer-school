@@ -77,19 +77,16 @@ namespace SummerSchool
             string[] students = new string[15];
 
 
-            for (int i = 0; i <= 15; i++)
+            for (int i = 0; i < 15; i++)
             {
                 Console.WriteLine("Enter a student then press enter.");
                 students[i] = Console.ReadLine();
-
-                if (i == 15)
-                    continue; 
                
             }
 
             Console.WriteLine();
             Console.WriteLine("You just enrolled: ");
-             for (int i= 0; i <= 15; i++)
+             for (int i= 0; i < 15; i++)
             {
                 Console.WriteLine(students[i]);
             }
