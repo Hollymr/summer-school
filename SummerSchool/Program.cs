@@ -100,12 +100,28 @@ namespace SummerSchool
             {
                 students[spot] = student;
                 studentsCost[spot] = cost;
-                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost/2);
+                //studentsCost = cost * .5
+                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost*.5);
             }
             else if (student.ToLower() == "longbottom")
             {
-                
+                students[spot] = student;
+                studentsCost[spot] = cost;
+                if (CountStudent() < 10)
+                {
+                    Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + 0%  cost);
+                }
+                else
+                {
+                    Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);
+                    
+                }
+
             }
+
+            // first initial same as last initial
+            //else if 
+            //{}
             else if (student.ToLower() == "tom")
             {
                 Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
@@ -124,6 +140,21 @@ namespace SummerSchool
                 studentsCost[spot] = cost;
                 Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);
             }
+        }
+
+        static int CountStudent()
+        {
+            int count = 0;
+            for(int i = 0; i < students.Length; i++)
+            {
+                if (students[i] != null)
+                {
+                    count ++;
+                }                
+            }
+            return count;
+
+
         }
 
         static void UnEnrollStudent()
