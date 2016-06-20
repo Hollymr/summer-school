@@ -37,8 +37,7 @@ namespace SummerSchool
 
         static void Main(string[] args)
         {
-           while(true)
-                Console.Clear();
+           while(true)              
             {
                 
                 int menuChoice = MenuGetInput();
@@ -88,12 +87,11 @@ namespace SummerSchool
 
 
         static void EnrollStudent()
-        {
- 
+        { 
             Console.WriteLine("Enter a student then press enter.");
             string student = Console.ReadLine();
             int spot = GetAvalibleSpot();
-            students[spot] = null;
+            students[spot] = student;
         }
 
         static void UnEnrollStudent()
@@ -109,8 +107,6 @@ namespace SummerSchool
             //    students[i] = Console.ReadLine();
 
             //}
-
-
         }
 
         static void PrintStudentList()
