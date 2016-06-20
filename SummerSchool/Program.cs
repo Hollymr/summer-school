@@ -13,9 +13,9 @@ namespace SummerSchool
         static int MenuGetInput()
         {
 
-            //Console.Clear();
-           // while (menuChoice != 4)
             
+            // while (menuChoice != 4)
+
 
             Console.WriteLine("Welcome to Hogwarts!");
             Console.WriteLine();
@@ -33,11 +33,12 @@ namespace SummerSchool
         }
 
         static string[] students = new string[15];
-            
+        
 
         static void Main(string[] args)
         {
            while(true)
+                Console.Clear();
             {
                 
                 int menuChoice = MenuGetInput();
@@ -92,26 +93,23 @@ namespace SummerSchool
             Console.WriteLine("Enter a student then press enter.");
             string student = Console.ReadLine();
             int spot = GetAvalibleSpot();
-            students[spot] = student;
+            students[spot] = null;
         }
 
         static void UnEnrollStudent()
         {
-            string[] students = new string[15];
+            Console.WriteLine("Enter a student to be unenrolled then press enter.");
+            string student = Console.ReadLine();
+            int spot = GetAvalibleSpot();
+            students[spot] = student;
 
-            for (int i = 0; i < 15; i--)
-            {
-                Console.WriteLine("Enter a student then press enter.");
-                students[i] = Console.ReadLine();
+            //for (int i = 0; i < students.Length; i--)
+            //{
+            //    Console.WriteLine("Enter a student then press enter.");
+            //    students[i] = Console.ReadLine();
 
-            }
+            //}
 
-            Console.WriteLine();
-            Console.WriteLine("You just enrolled: ");
-            for (int i = 0; i < 15; i--)
-            {
-                Console.WriteLine(students[i]);
-            }
 
         }
 
