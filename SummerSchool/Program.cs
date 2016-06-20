@@ -32,12 +32,12 @@ namespace SummerSchool
             
         }
 
-        //atic string[] students = new string[15];
+        static string[] students = new string[15];
             
 
         static void Main(string[] args)
         {
-           //hile(true)
+           while(true)
             {
                 
                 int menuChoice = MenuGetInput();
@@ -46,27 +46,43 @@ namespace SummerSchool
                    EnrollStudent();                   
                 }
 
-                if (menuChoice == 2)
+               else if (menuChoice == 2)
                 {
                     UnEnrollStudent();
                 }
 
-                if (menuChoice == 3)
+              else  if (menuChoice == 3)
                 {
                     PrintStudentList();
                 }
 
-                if (menuChoice == 4)
+               else if (menuChoice == 4)
                 {
-                    Exit();
+                    //quit
+                    break;
                 }
-
-                Console.ReadKey();
+                else
+                {
+                    Console.WriteLine("Please enter number 1-4");
+                }
+                
 
             }
         }
 
+        static int GetAvalibleSpot()
+        {
 
+        for(int i = 0; i < students.Length; i++)
+            {
+                if (students[i] == null)
+                {
+                    return i;
+                }
+                return -1;
+            }
+        
+        }
 
 
 
@@ -74,40 +90,66 @@ namespace SummerSchool
         {
 
 
-            string[] students = new string[15];
+            //string[] students = new string[15];
 
 
             for (int i = 0; i < 15; i++)
             {
                 Console.WriteLine("Enter a student then press enter.");
                 students[i] = Console.ReadLine();
+                
                
             }
 
             Console.WriteLine();
             Console.WriteLine("You just enrolled: ");
-             for (int i= 0; i < 15; i++)
+            for (int i = 0; i < 15; i++)
             {
                 Console.WriteLine(students[i]);
+                 
+
             }
 
 
-       
+
         }
 
         static void UnEnrollStudent()
         {
+            string[] students = new string[15];
 
-            Console.WriteLine("Unenroll");
+            for (int i = 0; i < 15; i--)
+            {
+                Console.WriteLine("Enter a student then press enter.");
+                students[i] = Console.ReadLine();
+
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("You just enrolled: ");
+            for (int i = 0; i < 15; i--)
+            {
+                Console.WriteLine(students[i]);
+            }
+
         }
 
         static void PrintStudentList()
         {
-            Console.Write("Print Student List");
+            //string[] students = new string[15];
+
+            Console.WriteLine();
+            Console.WriteLine("Student List");
+           for (int i = 0; i < students.Length; i++)
+            {
+                // EnrollStudent()
+                Console.WriteLine(students[1]);
+            }
         }
 
         static void Exit()
         {
+            
             Console.ReadKey();
        
         }
