@@ -95,18 +95,18 @@ namespace SummerSchool
         }
 
         static void UnEnrollStudent()
-        {
-            Console.WriteLine("Enter a student to be unenrolled then press enter.");
-            string student = Console.ReadLine();
-            int spot = GetAvalibleSpot();
-            students[spot] = null ;
-
-            //for (int i = 0; i < students.Length; i--)
-            //{
-            //    Console.WriteLine("Enter a student then press enter.");
-            //    students[i] = Console.ReadLine();
-
-            //}
+        {            
+            Console.WriteLine("Enter the number of the student you want to unenroll then press enter.");
+            PrintStudentList();
+                      
+            int studentNumber = Convert.ToInt32(Console.ReadLine());
+            int number = studentNumber - 1;
+            Console.WriteLine(students[number] + " has been unenrolled.");
+            students[number] = null;
+            Console.WriteLine();
+           
+            
+           
         }
 
         static void PrintStudentList()
@@ -115,7 +115,7 @@ namespace SummerSchool
             for (int i = 0; i < students.Length; i++)
             {
                 // EnrollStudent()
-                Console.WriteLine(i + 1 + students[i]);
+                Console.WriteLine(i + 1 + ". " + students[i]);
             }
         }
 
