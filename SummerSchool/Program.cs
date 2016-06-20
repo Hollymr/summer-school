@@ -96,11 +96,33 @@ namespace SummerSchool
             {
                 Console.WriteLine("Student cannot be enrolled!");
             }
+            else if (student.ToLower() == "potter")
+            {
+                students[spot] = student;
+                studentsCost[spot] = cost;
+                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost/2);
+            }
+            else if (student.ToLower() == "longbottom")
+            {
+                
+            }
+            else if (student.ToLower() == "tom")
+            {
+                Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
+            }
+            else if (student.ToLower() == "riddle")
+            {
+                Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
+            }
+            else if (student.ToLower() == "voldemort")
+            {
+                Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
+            }
             else
             {
                 students[spot] = student;
                 studentsCost[spot] = cost;
-                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £200.");
+                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);
             }
         }
 
