@@ -77,7 +77,7 @@ namespace SummerSchool
                 else
                 {
                     Console.WriteLine("Please enter number 1-4");
-                    Console.WriteLine("Press enter to continue.");
+                    
                 }
                 
 
@@ -103,19 +103,25 @@ namespace SummerSchool
         static void EnrollStudent()
         {
             double cost = 200;
-            Console.WriteLine("Enter a student then press enter.");
+            Console.WriteLine("Enter first and last name of a student then press enter.");
             string student = Console.ReadLine();
+            var names = student.Split(' ');
+            string firstName = names[0];
+            string lastName = names[1];
             int spot = GetAvalibleSpot();
+            // special case malfoy
             if (student.ToLower() == "malfoy")
             {
                 Console.WriteLine("Student cannot be enrolled!");
             }
+            // special case harry potter 
             else if (student.ToLower() == "potter")
             {
                 students[spot] = student;
                 studentsCost[spot] = cost/2;               
                 Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost/2);
             }
+            // special case longbottom
             else if (student.ToLower() == "longbottom")
             {                
                 if (CountStudent() < 10)
@@ -128,23 +134,29 @@ namespace SummerSchool
                 {
                     students[spot] = student;
                     studentsCost[spot] = cost;
-                    Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);
-                    
+                    Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);                    
                 }
-
             }
 
             // first initial same as last initial
-            //else if 
-            //{}
+            else if (firstName.First() == lastName.First())
+            {
+                students[spot] = student;
+                studentsCost[spot] = cost * .9;
+                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost * .9);
+            }
+
+            // special case tom
             else if (student.ToLower() == "tom")
             {
                 Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
             }
+            // special case riddle
             else if (student.ToLower() == "riddle")
             {
                 Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
             }
+            //speical case voldemort
             else if (student.ToLower() == "voldemort")
             {
                 Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
