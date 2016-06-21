@@ -232,8 +232,7 @@ namespace SummerSchool
                 runningTotal = runningTotal + studentsCost[i];
             }
             Console.WriteLine("Total: £" + runningTotal);
-
-            //runningTotal = runningTotal + studentsCost[];
+            
 
         }
         static void Exit()
