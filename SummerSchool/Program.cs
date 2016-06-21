@@ -103,12 +103,13 @@ namespace SummerSchool
         static void EnrollStudent()
         {
             double cost = 200;
-            Console.WriteLine("Enter first and last name of a student then press enter.");
+            Console.WriteLine("Enter FIRST AND LAST name of a student then press enter.");
             string student = Console.ReadLine();
             var names = student.Split(' ');
             string firstName = names[0];
             string lastName = names[1];
             int spot = GetAvalibleSpot();
+
             // special case malfoy
             if (student.ToLower() == "malfoy")
             {
@@ -138,12 +139,13 @@ namespace SummerSchool
                 }
             }
 
-            // first initial same as last initial
+            // special case first initial same as last initial
             else if (firstName.First() == lastName.First())
             {
                 students[spot] = student;
                 studentsCost[spot] = cost * .9;
                 Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost * .9);
+                
             }
 
             // special case tom
