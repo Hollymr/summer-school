@@ -219,13 +219,21 @@ namespace SummerSchool
 
         static void PrintStudentList()
         {
-
+            
+            double runningTotal = 0;
             for (int i = 0; i < students.Length; i++)
             {
                 // EnrollStudent()
-                if (students[i] != null)
+                if(students[i] != null)
+                {
+                    
+                }
                     Console.WriteLine(i + 1 + ". " + students[i] + " £" + studentsCost[i]);
+                runningTotal = runningTotal + studentsCost[i];
             }
+            Console.WriteLine("Total: £" + runningTotal);
+
+            //runningTotal = runningTotal + studentsCost[];
 
         }
         static void Exit()
