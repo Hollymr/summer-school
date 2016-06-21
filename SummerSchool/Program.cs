@@ -111,7 +111,7 @@ namespace SummerSchool
         static void EnrollStudent()
         {
             double cost = 200;
-            Console.WriteLine("Enter FIRST AND LAST name of a student then press enter.");
+            Console.WriteLine("Enter first and last name of a student then press enter.");
             string student = Console.ReadLine();
             string[] names = student.Split(' ');
             string firstName = names[0];
@@ -146,20 +146,11 @@ namespace SummerSchool
                     Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);
                 }
             }
-
-            // special case first initial same as last initial
-            else if (firstName.First() == lastName.First())
-            {
-
-                students[spot] = student;
-                studentsCost[spot] = cost * .9;
-                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost * .9);
-                               
-            }
-
+           
             // special case tom
             else if (student.ToLower() == "tom")
-            {
+                
+            {                
                 students[spot] = student;
                 studentsCost[spot] = cost;
                 Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
@@ -180,6 +171,15 @@ namespace SummerSchool
                 studentsCost[spot] = cost;
                 Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
                 Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);
+            }
+            // special case first initial same as last initial
+            else if (firstName.First() == lastName.First())
+            {
+
+                students[spot] = student;
+                studentsCost[spot] = cost * .9;
+                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost * .9);
+
             }
             else
             {
