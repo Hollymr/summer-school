@@ -9,10 +9,10 @@ namespace SummerSchool
     class Program
     {
         //static string[] Students = new string[15];
-
+        
         static int MenuGetInput()
         {
-
+            int menuChoice = 0;
 
             // while (menuChoice != 4)
 
@@ -26,7 +26,20 @@ namespace SummerSchool
             Console.WriteLine("3. Print out list of enrolled students");
             Console.WriteLine("4. Exit");
             
-            int menuChoice = Convert.ToInt32(Console.ReadLine());
+            while (menuChoice < 1 || menuChoice > 4)
+            {
+                try
+                {
+                    string userChoice = Console.ReadLine();
+                    menuChoice = Convert.ToInt32(userChoice);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("Please enter number 1-4");
+                }
+            }
+
+            
             return menuChoice;
 
             
@@ -64,6 +77,7 @@ namespace SummerSchool
                 else
                 {
                     Console.WriteLine("Please enter number 1-4");
+                    Console.WriteLine("Press enter to continue.");
                 }
                 
 
