@@ -224,12 +224,12 @@ namespace SummerSchool
             for (int i = 0; i < students.Length; i++)
             {
                 // EnrollStudent()
-                if(students[i] != null)
+                if (students[i] != null)
                 {
-                    
-                }
+
                     Console.WriteLine(i + 1 + ". " + students[i] + " £" + studentsCost[i]);
-                runningTotal = runningTotal + studentsCost[i];
+                    runningTotal = runningTotal + studentsCost[i];
+                }
             }
             Console.WriteLine("Total: £" + runningTotal);
             
