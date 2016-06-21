@@ -9,7 +9,7 @@ namespace SummerSchool
     class Program
     {
         //static string[] Students = new string[15];
-        
+
         static int MenuGetInput()
         {
             int menuChoice = 0;
@@ -25,7 +25,7 @@ namespace SummerSchool
             Console.WriteLine("2. Unenroll a student");
             Console.WriteLine("3. Print out list of enrolled students");
             Console.WriteLine("4. Exit");
-            
+
             while (menuChoice < 1 || menuChoice > 4)
             {
                 try
@@ -33,16 +33,16 @@ namespace SummerSchool
                     string userChoice = Console.ReadLine();
                     menuChoice = Convert.ToInt32(userChoice);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.WriteLine("Please enter number 1-4");
                 }
             }
 
-            
+
             return menuChoice;
 
-            
+
         }
 
         static string[] students = new string[15];
@@ -50,26 +50,26 @@ namespace SummerSchool
 
         static void Main(string[] args)
         {
-           while(true)              
+            while (true)
             {
                 
                 int menuChoice = MenuGetInput();
-                if (menuChoice == 1)                    
+                if (menuChoice == 1)
                 {
-                   EnrollStudent();                   
+                    EnrollStudent();
                 }
 
-               else if (menuChoice == 2)
+                else if (menuChoice == 2)
                 {
                     UnEnrollStudent();
                 }
 
-              else  if (menuChoice == 3)
+                else if (menuChoice == 3)
                 {
                     PrintStudentList();
                 }
 
-               else if (menuChoice == 4)
+                else if (menuChoice == 4)
                 {
                     //quit
                     break;
@@ -77,9 +77,9 @@ namespace SummerSchool
                 else
                 {
                     Console.WriteLine("Please enter number 1-4");
-                    
+
                 }
-                
+
 
             }
         }
@@ -87,13 +87,13 @@ namespace SummerSchool
         static int GetAvalibleSpot()
         {
 
-        for(int i = 0; i < students.Length; i++)
+            for (int i = 0; i < students.Length; i++)
             {
                 if (students[i] == null)
                 {
                     return i;
                 }
-                
+
             }
             return -1;
         }
@@ -111,20 +111,20 @@ namespace SummerSchool
             int spot = GetAvalibleSpot();
 
             // special case malfoy
-            if (student.ToLower() == "malfoy")
+            if (lastName.ToLower() == "malfoy")
             {
                 Console.WriteLine("Student cannot be enrolled!");
             }
             // special case harry potter 
-            else if (student.ToLower() == "potter")
+            else if (lastName.ToLower() == "potter")
             {
                 students[spot] = student;
-                studentsCost[spot] = cost/2;               
-                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost/2);
+                studentsCost[spot] = cost / 2;
+                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost / 2);
             }
             // special case longbottom
-            else if (student.ToLower() == "longbottom")
-            {                
+            else if (lastName.ToLower() == "longbottom")
+            {
                 if (CountStudent() < 10)
                 {
                     students[spot] = student;
@@ -135,33 +135,48 @@ namespace SummerSchool
                 {
                     students[spot] = student;
                     studentsCost[spot] = cost;
-                    Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);                    
+                    Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);
                 }
             }
 
             // special case first initial same as last initial
             else if (firstName.First() == lastName.First())
             {
+
                 students[spot] = student;
                 studentsCost[spot] = cost * .9;
                 Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost * .9);
-                
+
+                //else
+                //{
+                //    lastName = null;
+                //    Console.WriteLine("Please Type in last name.");
+                //}                
             }
 
             // special case tom
-            else if (student.ToLower() == "tom")
+            else if (firstName.ToLower() == "tom")
             {
+                students[spot] = student;
+                studentsCost[spot] = cost;
                 Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
+                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);
             }
             // special case riddle
-            else if (student.ToLower() == "riddle")
+            else if (lastName.ToLower() == "riddle")
             {
+                students[spot] = student;
+                studentsCost[spot] = cost;
                 Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
+                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);
             }
             //speical case voldemort
-            else if (student.ToLower() == "voldemort")
+            else if (firstName.ToLower() == "voldemort" || lastName.ToLower() == "voldemort")
             {
+                students[spot] = student;
+                studentsCost[spot] = cost;
                 Console.WriteLine("RED ALERT!!!HE WHO MUST NOT BE NAMED!!!");
+                Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost);
             }
             else
             {
@@ -174,12 +189,12 @@ namespace SummerSchool
         static int CountStudent()
         {
             int count = 0;
-            for(int i = 0; i < students.Length; i++)
+            for (int i = 0; i < students.Length; i++)
             {
                 if (students[i] != null)
                 {
-                    count ++;
-                }                
+                    count++;
+                }
             }
             return count;
 
@@ -187,16 +202,16 @@ namespace SummerSchool
         }
 
         static void UnEnrollStudent()
-        {            
+        {
             Console.WriteLine("Enter the number of the student you want to unenroll then press enter.");
             PrintStudentList();
-                      
+
             int studentNumber = Convert.ToInt32(Console.ReadLine());
             int number = studentNumber - 1;
             Console.WriteLine(students[number] + " has been unenrolled.");
             students[number] = null;
             Console.WriteLine();
-                                  
+
         }
 
         static void PrintStudentList()
@@ -210,18 +225,45 @@ namespace SummerSchool
 
         }
 
-        
+        static void HideMenu()
+        {
+            int counter = 0;
+            for (int i =0; i < students.Length; i++)
+            {
+                counter++;
+            }
+            if (counter == 15)
+            {
+                Console.WriteLine("2. Unenroll a student");
+                Console.WriteLine("3. Print out list of enrolled");
+                Console.WriteLine("4. Exit");
+            }
+            else if (counter == 0)
+            {
+                Console.WriteLine("1. Enroll a student");
+                Console.WriteLine("3. Print out list of enrolled");
+                Console.WriteLine("4. Exit");
+            }
+            else
+            {
+                Console.WriteLine("1. Enroll a student");
+                Console.WriteLine("2. Unenroll a student");
+                Console.WriteLine("3. Print out list of enrolled");
+                Console.WriteLine("4. Exit");
+            }
+        }
+
 
         static void Exit()
         {
-            
+
             Console.ReadKey();
-       
+
         }
-       
-        
-    
+
+
+
 
     }
-    
+
 }
