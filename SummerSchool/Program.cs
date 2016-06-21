@@ -12,6 +12,7 @@ namespace SummerSchool
 
         static int MenuGetInput()
         {
+            
             int menuChoice = 0;
 
             // while (menuChoice != 4)
@@ -21,8 +22,14 @@ namespace SummerSchool
             Console.WriteLine();
             Console.WriteLine("Choose option below.");
             Console.WriteLine();
-            Console.WriteLine("1. Enroll a student");
-            Console.WriteLine("2. Unenroll a student");
+            if (CountStudent() < students.Length)
+            {
+                Console.WriteLine("1. Enroll a student");
+            }
+            if (CountStudent() > 0)
+            {
+                Console.WriteLine("2. Unenroll a student");
+            }
             Console.WriteLine("3. Print out list of enrolled students");
             Console.WriteLine("4. Exit");
 
@@ -50,13 +57,14 @@ namespace SummerSchool
 
         static void Main(string[] args)
         {
-            while (true)
+            while (true)             
             {
                 
-                int menuChoice = MenuGetInput();
+                int menuChoice = MenuGetInput();                
                 if (menuChoice == 1)
                 {
                     EnrollStudent();
+                    
                 }
 
                 else if (menuChoice == 2)
@@ -105,9 +113,9 @@ namespace SummerSchool
             double cost = 200;
             Console.WriteLine("Enter FIRST AND LAST name of a student then press enter.");
             string student = Console.ReadLine();
-            var names = student.Split(' ');
+            string[] names = student.Split(' ');
             string firstName = names[0];
-            string lastName = names[1];
+            string lastName = names[names.Length -1];
             int spot = GetAvalibleSpot();
 
             // special case malfoy
@@ -146,16 +154,11 @@ namespace SummerSchool
                 students[spot] = student;
                 studentsCost[spot] = cost * .9;
                 Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost * .9);
-
-                //else
-                //{
-                //    lastName = null;
-                //    Console.WriteLine("Please Type in last name.");
-                //}                
+                               
             }
 
             // special case tom
-            else if (firstName.ToLower() == "tom")
+            else if (student.ToLower() == "tom")
             {
                 students[spot] = student;
                 studentsCost[spot] = cost;
@@ -220,40 +223,11 @@ namespace SummerSchool
             for (int i = 0; i < students.Length; i++)
             {
                 // EnrollStudent()
-                Console.WriteLine(i + 1 + ". " + students[i] + " £" + studentsCost[i]);
+                if (students[i] != null)
+                    Console.WriteLine(i + 1 + ". " + students[i] + " £" + studentsCost[i]);
             }
 
         }
-
-        static void HideMenu()
-        {
-            int counter = 0;
-            for (int i =0; i < students.Length; i++)
-            {
-                counter++;
-            }
-            if (counter == 15)
-            {
-                Console.WriteLine("2. Unenroll a student");
-                Console.WriteLine("3. Print out list of enrolled");
-                Console.WriteLine("4. Exit");
-            }
-            else if (counter == 0)
-            {
-                Console.WriteLine("1. Enroll a student");
-                Console.WriteLine("3. Print out list of enrolled");
-                Console.WriteLine("4. Exit");
-            }
-            else
-            {
-                Console.WriteLine("1. Enroll a student");
-                Console.WriteLine("2. Unenroll a student");
-                Console.WriteLine("3. Print out list of enrolled");
-                Console.WriteLine("4. Exit");
-            }
-        }
-
-
         static void Exit()
         {
 
