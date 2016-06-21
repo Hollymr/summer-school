@@ -107,8 +107,8 @@ namespace SummerSchool
                 if (CountStudent() < 10)
                 {
                     students[spot] = student;
-                    studentsCost[spot] = 0% cost;
-                    Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + 0%  cost);
+                    studentsCost[spot] = cost * 0;
+                    Console.WriteLine(students[spot] + " is now enrolled at Hogwarts and owes £" + cost * 0);
                 }
                 else
                 {
